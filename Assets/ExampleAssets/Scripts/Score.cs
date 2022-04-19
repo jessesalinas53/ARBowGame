@@ -6,14 +6,32 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     public int score = 0;
+    public int highScore = 0;
     public Text scoreText;
     public Text highScoreText;
-    public Text yourScoreText;
+    public Text postGameScoreText;
+    public Text menuHighScoreText;
+
+    public GameObject MenuPnl;
+    public GameObject RestartPnl;
+
+    Timer timerScript;
 
     private void Start()
     {
         score = 0;
-        scoreText.text = "Score: " + score.ToString();
+        scoreText.text = "Score: 0";
+        highScore = PlayerPrefs.GetInt("High Score");
+        menuHighScoreText.text = "High Score: " + highScore;
+
+        timerScript = GetComponent<Timer>();
+    }
+    private void Update()
+    {
+        if(timerScript.timeRemaining <= 0)
+        {
+            UpdateScoreText();
+        }
     }
 
     public void AddScore(int points)
@@ -25,6 +43,36 @@ public class Score : MonoBehaviour
 
     public void UpdateScoreText()
     {
-        yourScoreText.text = "Your Score: " + score;
+        postGameScoreText.text = "Your Score: " + score;
+
+        if(score > PlayerPrefs.GetInt("High Score", 0))
+        {
+            Debug.Log("High Score set.");
+            PlayerPrefs.SetInt("High Score", highScore);
+            highScore = score;
+            highScoreText.text = "High Score: " + highScore;
+        }
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
+        scoreText.text = "Score: 0";
+    }
+
+    public void ResetHighScore()
+    {
+        PlayerPrefs.DeleteKey("High Score");
+        highScore = 0;
+        score = 0;
+        menuHighScoreText.text = "High Score: " + highScore;
+        highScoreText.text = "High Score: " + highScore;
+    }
+
+    public void ReturnToMenu()
+    {
+        RestartPnl.SetActive(false);
+        MenuPnl.SetActive(true);
+        menuHighScoreText.text = "High Score: " + highScore;
     }
 }

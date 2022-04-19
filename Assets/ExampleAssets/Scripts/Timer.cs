@@ -10,8 +10,6 @@ public class Timer : MonoBehaviour
     public Text timerText;
     public GameObject restartPanel;
 
-    Score Score;
-
     void Update()
     {
         if(timerIsRunning == true)
@@ -25,7 +23,6 @@ public class Timer : MonoBehaviour
                 timeRemaining = 0;
                 timerIsRunning = false;
                 restartPanel.SetActive(true);
-                Score.UpdateScoreText();
             }
         }
         
@@ -45,6 +42,5 @@ public class Timer : MonoBehaviour
         timeRemaining = 5;
         timerIsRunning = true;
         restartPanel.SetActive(false);
-
     }
 }
