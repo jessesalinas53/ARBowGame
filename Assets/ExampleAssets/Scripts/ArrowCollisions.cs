@@ -13,7 +13,6 @@ public class ArrowCollisions : MonoBehaviour
     private void Start()
     {
         gameController = GameObject.Find("GameController");
-        
     }
 
     void OnCollisionEnter(Collision collision)
@@ -29,7 +28,7 @@ public class ArrowCollisions : MonoBehaviour
         {
             Debug.Log("Hit Ground");
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            Destroy(gameObject, .8f);
+            Destroy(gameObject, 1f);
         }
 
         if (collision.gameObject.name == "Bullseye")
