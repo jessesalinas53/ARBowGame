@@ -9,10 +9,12 @@ public class BowController : MonoBehaviour
     public float arrowVelocity = 20f;
     GameObject arrow;
 
+    public AudioSource shootAudio;
+
     public void ShootArrow()
     {
         arrow = Instantiate(arrowPrefab, arrowSpawn.transform.position, arrowSpawn.transform.rotation);
         arrow.GetComponent<Rigidbody>().AddForce(transform.forward * arrowVelocity);
-        //add sound
+        shootAudio.Play();
     }
 }

@@ -12,8 +12,8 @@ public class Score : MonoBehaviour
     public Text postGameScoreText;
     public Text menuHighScoreText;
 
-    public GameObject MenuPnl;
-    public GameObject RestartPnl;
+    public GameObject startMenuPnl;
+    public GameObject restartPnl;
 
     Timer timerScript;
 
@@ -22,6 +22,7 @@ public class Score : MonoBehaviour
         score = 0;
         scoreText.text = "Score: 0";
         highScore = PlayerPrefs.GetInt("High Score");
+        highScoreText.text = "High Score: " + highScore;
         menuHighScoreText.text = "High Score: " + highScore;
 
         timerScript = GetComponent<Timer>();
@@ -54,6 +55,11 @@ public class Score : MonoBehaviour
         }
     }
 
+    public void StartButton()
+    {
+        startMenuPnl.SetActive(false);
+    }
+
     public void ResetScore()
     {
         score = 0;
@@ -71,8 +77,8 @@ public class Score : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        RestartPnl.SetActive(false);
-        MenuPnl.SetActive(true);
+        restartPnl.SetActive(false);
+        startMenuPnl.SetActive(true);
         menuHighScoreText.text = "High Score: " + highScore;
     }
 }
