@@ -56,7 +56,6 @@ GameObject:
   - component: {fileID: 7944683800107181075}
   - component: {fileID: 7944683800107181072}
   - component: {fileID: 7944683800107181073}
-  - component: {fileID: 7944683800107181074}
   m_Layer: 5
   m_Name: img_Webcam
   m_TagString: Untagged
@@ -118,18 +117,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &7944683800107181074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7944683800107181084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22bcff57ffed0b141bdd10be54b1a81d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7944683800220612056
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +129,7 @@ GameObject:
   - component: {fileID: 7944683800220612061}
   - component: {fileID: 7944683800220612062}
   - component: {fileID: 7944683800220612063}
+  - component: {fileID: 6467111004922132918}
   m_Layer: 5
   m_Name: cvs_Webcam
   m_TagString: Untagged
@@ -230,3 +218,15 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6467111004922132918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7944683800220612056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bcff57ffed0b141bdd10be54b1a81d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
