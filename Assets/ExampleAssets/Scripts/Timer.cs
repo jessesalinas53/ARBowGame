@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
     public float timeRemaining = 30;
     public bool timerIsRunning = false;
-    public Text timerText;
+    public TMP_Text timerText;
     public GameObject restartPanel;
 
     void Update()
@@ -25,7 +26,6 @@ public class Timer : MonoBehaviour
                 restartPanel.SetActive(true);
             }
         }
-        
         DisplayText(timeRemaining);
     }
 
@@ -38,8 +38,8 @@ public class Timer : MonoBehaviour
 
     public void StartTimer()
     {
-        
-        timeRemaining = 5;
+        // auto setting timeRemaining regardless of user input
+        //timeRemaining = 5;
         timerIsRunning = true;
         restartPanel.SetActive(false);
     }
