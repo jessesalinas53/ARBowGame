@@ -78,8 +78,8 @@ public class Score : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        restartPnl.SetActive(false);
         startMenuPnl.SetActive(true);
         menuHighScoreText.text = "High Score: " + highScore;
+        restartPnl.SetActive(false);
     }
 }

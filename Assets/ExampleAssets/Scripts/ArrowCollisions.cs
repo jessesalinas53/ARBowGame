@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ArrowCollisions : MonoBehaviour
 {
-    GameObject gameController;
+    //GameObject gameController;
+    private Score score;
     BowController bowController;
 
     public AudioSource hitAudio;
@@ -12,11 +13,13 @@ public class ArrowCollisions : MonoBehaviour
 
     private void Start()
     {
-        gameController = GameObject.Find("GameController");
+        //gameController = GameObject.Find("GameController");
+        score = FindObjectOfType<Score>();
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        /*
         if(collision.gameObject.tag == "Target")
         {
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -24,13 +27,30 @@ public class ArrowCollisions : MonoBehaviour
             hitParticles.Play();
             Destroy(gameObject, 1f);
         }
-        else if (collision.gameObject.name == "Ground")
+        */
+
+        if (collision.gameObject.name == "Ground")
         {
             Debug.Log("Hit Ground");
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
             Destroy(gameObject, 1f);
         }
 
+        if (collision.gameObject.GetComponent<Target>() != null)
+        {
+            var value = collision.gameObject.GetComponent<Target>().Value;
+
+            if (score != null)
+            {
+                score.AddScore(value);
+            }
+
+            hitAudio.Play();
+            hitParticles.Play();
+            Destroy(gameObject, 1f);
+        }
+
+        /*
         if (collision.gameObject.name == "Bullseye")
         {
             Debug.Log("Hit Bullseye");
@@ -60,5 +80,6 @@ public class ArrowCollisions : MonoBehaviour
             Debug.Log("Hit Ring 4");
             gameController.GetComponent<Score>().AddScore(10);
         }
+        */
     }
 }

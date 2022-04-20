@@ -21,7 +21,6 @@ public class Webcam : MonoBehaviour
         _webCamTexture = new WebCamTexture();
         _rawImage.material.mainTexture = _webCamTexture;
         _webCamTexture.Play();
-        Debug.Log(_webCamTexture.isPlaying);
     }
 
     public void StopWebCam()

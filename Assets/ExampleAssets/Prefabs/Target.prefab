@@ -1464,6 +1464,7 @@ GameObject:
   - component: {fileID: 7370410703425243451}
   - component: {fileID: 7370410703425243428}
   - component: {fileID: 2093932327}
+  - component: {fileID: 1708992804639253366}
   m_Layer: 0
   m_Name: Ring 1
   m_TagString: Untagged
@@ -1548,6 +1549,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8469322, y: 0.8829921, z: 0}
   m_Center: {x: 0.0018546358, y: 0.005618073, z: 0}
+--- !u!114 &1708992804639253366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7370410703425243431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3db2b2b9c8fa0147ae4094b3c955dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _value: 40
 --- !u!1 &7370410704240051574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1574,7 @@ GameObject:
   - component: {fileID: 7370410704240051530}
   - component: {fileID: 7370410704240051531}
   - component: {fileID: 1770192448}
+  - component: {fileID: 1910680256429570724}
   m_Layer: 0
   m_Name: Ring 3
   m_TagString: Untagged
@@ -1644,6 +1659,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.87623805, y: 0.87202954, z: 0}
   m_Center: {x: 0.0035499036, y: 0.0072874315, z: 0}
+--- !u!114 &1910680256429570724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7370410704240051574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3db2b2b9c8fa0147ae4094b3c955dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _value: 15
 --- !u!1 &7370410704324999433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,6 +1685,7 @@ GameObject:
   - component: {fileID: 7370410704324999438}
   - component: {fileID: 475192322}
   - component: {fileID: 475192325}
+  - component: {fileID: 8026867425891909811}
   m_Layer: 0
   m_Name: Bullseye
   m_TagString: Untagged
@@ -1672,7 +1701,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7370410704324999433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.323, y: -0.112, z: 0}
+  m_LocalPosition: {x: 0.2641, y: -0.112, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.01}
   m_Children:
   - {fileID: 1906408674}
@@ -1757,6 +1786,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &8026867425891909811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7370410704324999433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3db2b2b9c8fa0147ae4094b3c955dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _value: 75
 --- !u!1 &7370410704719935764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,6 +1846,7 @@ GameObject:
   - component: {fileID: 7370410704825649660}
   - component: {fileID: 7370410704825649661}
   - component: {fileID: 26413248}
+  - component: {fileID: 2099963277681289953}
   m_Layer: 0
   m_Name: Ring 4
   m_TagString: Untagged
@@ -1888,6 +1931,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.885667, y: 0.89325017, z: 0}
   m_Center: {x: 0.014044911, y: 0.008268148, z: 0}
+--- !u!114 &2099963277681289953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7370410704825649656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3db2b2b9c8fa0147ae4094b3c955dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _value: 10
 --- !u!1 &7370410704853453731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,6 +1956,7 @@ GameObject:
   - component: {fileID: 7370410704853453735}
   - component: {fileID: 7370410704853453728}
   - component: {fileID: 1479424684}
+  - component: {fileID: 8237253684038691060}
   m_Layer: 0
   m_Name: Ring 2
   m_TagString: Untagged
@@ -1984,3 +2041,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.84529614, y: 0.8459234, z: 0}
   m_Center: {x: -0.0011443098, y: 0.0077450275, z: 0}
+--- !u!114 &8237253684038691060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7370410704853453731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3db2b2b9c8fa0147ae4094b3c955dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _value: 25

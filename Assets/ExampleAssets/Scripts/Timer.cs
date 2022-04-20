@@ -10,6 +10,14 @@ public class Timer : MonoBehaviour
     public bool timerIsRunning = false;
     public TMP_Text timerText;
     public GameObject restartPanel;
+    public GameObject gameCanvas;
+
+    private float initTime;
+
+    private void Start()
+    {
+        initTime = timeRemaining;
+    }
 
     void Update()
     {
@@ -24,6 +32,8 @@ public class Timer : MonoBehaviour
                 timeRemaining = 0;
                 timerIsRunning = false;
                 restartPanel.SetActive(true);
+                gameCanvas.SetActive(false);
+                timeRemaining = initTime;
             }
         }
         DisplayText(timeRemaining);
