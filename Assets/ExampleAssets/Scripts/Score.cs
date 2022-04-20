@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Score : MonoBehaviour
 {
     public int score = 0;
     public int highScore = 0;
-    public Text scoreText;
-    public Text highScoreText;
-    public Text postGameScoreText;
-    public Text menuHighScoreText;
+    public TMP_Text scoreText;
+    public TMP_Text highScoreText;
+    public TMP_Text postGameScoreText;
+    public TMP_Text menuHighScoreText;
 
     public GameObject startMenuPnl;
     public GameObject restartPnl;

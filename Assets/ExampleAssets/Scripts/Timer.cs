@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
     public float timeRemaining = 30;
     public bool timerIsRunning = false;
-    public Text timerText;
+    public TMP_Text timerText;
     public GameObject restartPanel;
 
     void Update()

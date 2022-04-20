@@ -12,9 +12,20 @@ public class Webcam : MonoBehaviour
 
     void Start()
     {
+        StartWebCam();
+    }
+
+    public void StartWebCam()
+    {
         _rawImage = GetComponent<RawImage>();
         _webCamTexture = new WebCamTexture();
         _rawImage.material.mainTexture = _webCamTexture;
         _webCamTexture.Play();
+        Debug.Log(_webCamTexture.isPlaying);
+    }
+
+    public void StopWebCam()
+    {
+        _webCamTexture.Stop();
     }
 }
