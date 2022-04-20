@@ -25,7 +25,6 @@ public class Timer : MonoBehaviour
                 restartPanel.SetActive(true);
             }
         }
-        
         DisplayText(timeRemaining);
     }
 
@@ -38,8 +37,8 @@ public class Timer : MonoBehaviour
 
     public void StartTimer()
     {
-        
-        timeRemaining = 5;
+        // auto setting timeRemaining regardless of user input
+        //timeRemaining = 5;
         timerIsRunning = true;
         restartPanel.SetActive(false);
     }
