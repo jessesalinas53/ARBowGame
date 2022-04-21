@@ -34,6 +34,7 @@ public class Timer : MonoBehaviour
                 restartPanel.SetActive(true);
                 gameCanvas.SetActive(false);
                 timeRemaining = _initTime;
+                GetComponent<GameController>().SetTimeScale(0);
             }
         }
         DisplayText(timeRemaining);
