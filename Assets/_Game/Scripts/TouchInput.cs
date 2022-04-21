@@ -25,7 +25,6 @@ public class TouchInput : MonoBehaviour
     {
         if (Input.touchSupported)
         {
-            Debug.LogAssertion("Touch is Supported");
             _spot1.text = "Touch is Supported";
             if (Input.touchCount > 0)
             {
@@ -80,9 +79,7 @@ public class TouchInput : MonoBehaviour
         }
         else
         {
-            //Debug.LogError("Touch Is Not Supported On This Device");
-            //return;
-
+            _spot1.text = "Touch is not Supported";
             if (Input.GetMouseButtonDown(0))
             {
                 _ray = Camera.main.ScreenPointToRay(Input.mousePosition); ;
