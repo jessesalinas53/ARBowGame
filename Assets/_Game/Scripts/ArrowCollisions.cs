@@ -27,6 +27,7 @@ public class ArrowCollisions : MonoBehaviour
 
             hitAudio.Play();
             hitParticles.Play();
+            GetComponent<Collider>().enabled = false;
             Destroy(gameObject, 1f);
         }
     }
