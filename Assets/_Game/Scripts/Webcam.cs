@@ -14,10 +14,10 @@ public class Webcam : MonoBehaviour
     private Quaternion _baseRotation;
     private Camera _camera;
 
-    [SerializeField] private TMP_Text _debugRot = null;
-    [SerializeField] private TMP_Text _debugAngle = null;
-    [SerializeField] private TMP_Text _speedText = null;
-    [SerializeField] private TMP_Text _gyroText = null;
+    [SerializeField] private TMP_Text _spot1 = null;
+    [SerializeField] private TMP_Text _spot2 = null;
+    [SerializeField] private TMP_Text _spot3 = null;
+    [SerializeField] private TMP_Text _spot4 = null;
     [SerializeField] private RectTransform _canvasTransform = null;
 
     private Vector3 _dir = Vector3.zero;
@@ -34,19 +34,12 @@ public class Webcam : MonoBehaviour
         _rawImage.material.mainTexture = _webCamTexture;
         _baseRotation = transform.rotation;
         StartWebCam();
-
-        //_debugAngle.text = SystemInfo.supportsGyroscope.ToString();
     }
 
     private void Update()
     {
-        //_debugAngle.text = _webCamTexture.videoRotationAngle.ToString();
-
         _canvasTransform.rotation = Quaternion.Euler(0,0,-_webCamTexture.videoRotationAngle) * _camera.gameObject.transform.rotation;
-        //_debugRot.text = _canvasTransform.rotation.ToString();
-
-        //CheckOrientation();
-        AccelerationToRotation(10f);
+        //AccelerationToRotation(10f);
     }
 
     public void StartWebCam()
@@ -81,8 +74,6 @@ public class Webcam : MonoBehaviour
 
         _dir *= Time.deltaTime;
 
-        //_speedText.text = (_dir * speed).ToString();
-        transform.rotation *= Quaternion.Euler(_dir * speed); 
-        //_gyroText.text = transform.rotation.eulerAngles.ToString();
+        transform.rotation *= Quaternion.Euler(_dir * speed);
     }
 }

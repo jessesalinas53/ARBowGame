@@ -40,7 +40,6 @@ public class Score : MonoBehaviour
     {
         score += points;
         scoreText.text = "Score: " + score;
-        //Debug.Log("Score: " + score);
     }
 
     public void UpdateScoreText()

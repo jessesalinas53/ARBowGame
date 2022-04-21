@@ -12,11 +12,11 @@ public class Timer : MonoBehaviour
     public GameObject restartPanel;
     public GameObject gameCanvas;
 
-    private float initTime;
+    private float _initTime;
 
     private void Start()
     {
-        initTime = timeRemaining;
+        _initTime = timeRemaining;
     }
 
     void Update()
@@ -33,7 +33,7 @@ public class Timer : MonoBehaviour
                 timerIsRunning = false;
                 restartPanel.SetActive(true);
                 gameCanvas.SetActive(false);
-                timeRemaining = initTime;
+                timeRemaining = _initTime;
             }
         }
         DisplayText(timeRemaining);
@@ -48,8 +48,6 @@ public class Timer : MonoBehaviour
 
     public void StartTimer()
     {
-        // auto setting timeRemaining regardless of user input
-        //timeRemaining = 5;
         timerIsRunning = true;
         restartPanel.SetActive(false);
     }
