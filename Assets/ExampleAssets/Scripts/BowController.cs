@@ -6,15 +6,24 @@ public class BowController : MonoBehaviour
 {
     public GameObject arrowPrefab;
     public GameObject arrowSpawn;
-    public float arrowVelocity = 20f;
-    GameObject arrow;
+    public float arrowVelocity = 30f;
 
     public AudioSource shootAudio;
 
     public void ShootArrow()
     {
-        arrow = Instantiate(arrowPrefab, arrowSpawn.transform.position, arrowSpawn.transform.rotation);
-        arrow.GetComponent<Rigidbody>().AddForce(transform.forward * arrowVelocity);
+        var arrow = Instantiate(arrowPrefab);
+        arrow.transform.position = arrowSpawn.transform.position;
+        arrow.transform.rotation = arrowSpawn.transform.parent.parent.rotation;
+        arrow.GetComponent<Rigidbody>().AddForce(arrow.transform.forward * arrowVelocity);
         shootAudio.Play();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ShootArrow();
+        }
     }
 }
