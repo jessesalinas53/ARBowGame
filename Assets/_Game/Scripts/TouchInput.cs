@@ -66,9 +66,9 @@ public class TouchInput : MonoBehaviour
                     var bow = _hit.collider.gameObject.GetComponent<BowController>();
                     if (bow != null)
                     {
-                        //var pivot = bow.gameObject.transform.parent;
-                        var pivot = _webcam.transform;
-                        pivot.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x,touch.position.y,10f)) * 0.2f);
+                        var pivot = bow.gameObject.transform.parent;
+                        //var pivot = _webcam.transform;
+                        pivot.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x,touch.position.y,10f)) * 0.1f);
                     }
                 }
 
