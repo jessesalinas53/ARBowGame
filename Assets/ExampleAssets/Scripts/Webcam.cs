@@ -13,7 +13,6 @@ public class Webcam : MonoBehaviour
     private WebCamTexture _webCamTexture;
     private Quaternion _baseRotation;
     private Camera _camera;
-    private Gyroscope _gyroscope;
 
     [SerializeField] private TMP_Text _debugRot = null;
     [SerializeField] private TMP_Text _debugAngle = null;
@@ -21,14 +20,11 @@ public class Webcam : MonoBehaviour
     [SerializeField] private TMP_Text _gyroText = null;
     [SerializeField] private RectTransform _canvasTransform = null;
 
-    private float _oldRatio = 0;
     private Vector3 _dir = Vector3.zero;
 
     private void Awake()
     {
         _camera = GetComponent<Camera>();
-        _gyroscope = Input.gyro;
-        _gyroscope.enabled = true;
     }
 
     private void Start()
@@ -37,11 +33,9 @@ public class Webcam : MonoBehaviour
         _webCamTexture = new WebCamTexture();
         _rawImage.material.mainTexture = _webCamTexture;
         _baseRotation = transform.rotation;
-
-        _oldRatio = _camera.aspect;
         StartWebCam();
 
-        _debugAngle.text = SystemInfo.supportsGyroscope.ToString();
+        //_debugAngle.text = SystemInfo.supportsGyroscope.ToString();
     }
 
     private void Update()
@@ -49,9 +43,9 @@ public class Webcam : MonoBehaviour
         //_debugAngle.text = _webCamTexture.videoRotationAngle.ToString();
 
         _canvasTransform.rotation = Quaternion.Euler(0,0,-_webCamTexture.videoRotationAngle) * _camera.gameObject.transform.rotation;
-        _debugRot.text = _canvasTransform.rotation.ToString();
+        //_debugRot.text = _canvasTransform.rotation.ToString();
 
-        CheckOrientation();
+        //CheckOrientation();
         AccelerationToRotation(10f);
     }
 
@@ -69,13 +63,12 @@ public class Webcam : MonoBehaviour
     {
         if (Input.deviceOrientation == DeviceOrientation.Portrait)
         {
-            
+            _canvasTransform.sizeDelta = new Vector2(1920, 2160);
         }
-        else if (Input.deviceOrientation == DeviceOrientation.LandscapeLeft)
+        else if (Input.deviceOrientation == DeviceOrientation.LandscapeLeft || Input.deviceOrientation == DeviceOrientation.LandscapeRight)
         {
-
+            _canvasTransform.sizeDelta = new Vector2(3840, 2160);
         }
-
     }
 
     private void AccelerationToRotation(float speed)
@@ -88,8 +81,8 @@ public class Webcam : MonoBehaviour
 
         _dir *= Time.deltaTime;
 
-        _speedText.text = (_dir * speed).ToString();
-        transform.Rotate(_dir * speed);
-        _gyroText.text = transform.rotation.eulerAngles.ToString();
+        //_speedText.text = (_dir * speed).ToString();
+        transform.rotation *= Quaternion.Euler(_dir * speed); 
+        //_gyroText.text = transform.rotation.eulerAngles.ToString();
     }
 }

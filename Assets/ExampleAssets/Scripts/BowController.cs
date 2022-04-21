@@ -6,7 +6,7 @@ public class BowController : MonoBehaviour
 {
     public GameObject arrowPrefab;
     public GameObject arrowSpawn;
-    public float arrowVelocity = 0f;
+    public float arrowVelocity = 30f;
 
     public AudioSource shootAudio;
 
