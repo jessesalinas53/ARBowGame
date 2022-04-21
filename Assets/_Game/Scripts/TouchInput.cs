@@ -16,6 +16,13 @@ public class TouchInput : MonoBehaviour
     private RaycastHit _hit;
     private Ray _ray;
 
+    private Webcam _webcam;
+
+    private void Start()
+    {
+        _webcam = Camera.main.gameObject.GetComponent<Webcam>();
+    }
+
     private void Update()
     {
         DrawBow();
@@ -59,7 +66,8 @@ public class TouchInput : MonoBehaviour
                     var bow = _hit.collider.gameObject.GetComponent<BowController>();
                     if (bow != null)
                     {
-                        var pivot = bow.gameObject.transform.parent;
+                        //var pivot = bow.gameObject.transform.parent;
+                        var pivot = _webcam.transform;
                         pivot.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x,touch.position.y,10f)));
                     }
                 }
@@ -93,6 +101,12 @@ public class TouchInput : MonoBehaviour
                         bow.gameObject.GetComponent<Animator>().SetTrigger("draw");
                     }
                 }
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                var bow = _hit.collider.gameObject.GetComponent<BowController>();
+                if (bow != null) bow.gameObject.GetComponent<Animator>().SetTrigger("shoot");
             }
         }
     }
