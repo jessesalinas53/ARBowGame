@@ -68,7 +68,7 @@ public class TouchInput : MonoBehaviour
                     {
                         //var pivot = bow.gameObject.transform.parent;
                         var pivot = _webcam.transform;
-                        pivot.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x,touch.position.y,10f)));
+                        pivot.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x,touch.position.y,10f)) * 0.2f);
                     }
                 }
 
@@ -102,6 +102,18 @@ public class TouchInput : MonoBehaviour
                     }
                 }
             }
+
+            if (Input.GetMouseButton(0))
+            {
+                var bow = _hit.collider.gameObject.GetComponent<BowController>();
+                if (bow != null)
+                {
+                    var pivot = _webcam.transform;
+                    pivot.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f)) * 0.2f);
+                }
+                
+            }
+
 
             if (Input.GetMouseButtonUp(0))
             {
