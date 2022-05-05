@@ -28,6 +28,7 @@ public class AudioManager : MonoBehaviour
         if (!source)
         {
             _audioSource.Stop();
+            _audioSource.loop = true;
             _audioSource.clip = clip;
             _audioSource.Play();
         }

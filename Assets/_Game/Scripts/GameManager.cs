@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Audio Clips")]
     [SerializeField] private AudioClip _backgroundGameAudio = null;
-    [SerializeField] private AudioClip _backgroundMenuAudio = null;
 
     private Timer _timer;
     private ScoreCounter _scoreCounter;
@@ -55,13 +54,11 @@ public class GameManager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
-
         _currentScene = scene.buildIndex;
 
         if (_currentScene == 1)
         {
-            AudioManager.Instance.PlayOneShot(_backgroundGameAudio);
+            //AudioManager.Instance.Play3DSound(_backgroundGameAudio);
             _menuCanvas.SetActive(false);
             _gameCanvas.SetActive(true);
             _timer.timerIsRunning = true;
@@ -69,7 +66,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //AudioManager.Instance.PlayOneShot(_backgroundMenuAudio);
+            AudioManager.Instance.Play3DSound(_backgroundGameAudio);
             Instance.HighScore = PlayerPrefs.GetInt("High Score");
             Instance.Score = 0;
             _scoreCounter.OnGameLoad();

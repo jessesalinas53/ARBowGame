@@ -57,11 +57,13 @@ public class BowController : MonoBehaviour
             _arrowModel.SetActive(false);
         }
 
-        yield return new WaitForSeconds(0.75f);
-        _audioSource.clip = _reloadAudio;
-        _audioSource.Play();
         yield return new WaitForSeconds(0.5f);
+        _audioSource.clip = _reloadAudio;
+        _audioSource.volume = 0.35f;
+        _audioSource.Play();
+        yield return new WaitForSeconds(0.3f);
 
+        _audioSource.volume = 1f;
         _arrowModel.SetActive(true);
         _canShoot = true;
     }
