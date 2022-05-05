@@ -30,13 +30,14 @@ public class Timer : MonoBehaviour
             if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
+                DisplayText(timeRemaining);
             }
             else
             {
                 OutOfTime();
             }
         }
-        DisplayText(timeRemaining);
+
     }
 
     public void OutOfTime()

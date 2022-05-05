@@ -33,7 +33,7 @@ public class Webcam : MonoBehaviour
         _baseRotation = transform.rotation;
         StartWebCam();
 
-        _offset = transform.rotation * Quaternion.Inverse(GyroToUnity(_camGyro.attitude));
+        _offset = transform.rotation * Quaternion.Inverse(GyroToUnity(new Quaternion(0.5f, -0.5f, -0.5f, 0.5f)));
     }
 
     private void Update()
@@ -57,7 +57,7 @@ public class Webcam : MonoBehaviour
         _canvasTransform.rotation = _offset * GyroToUnity(_camGyro.attitude);
     }
 
-    private static Quaternion GyroToUnity(Quaternion q)
+    private Quaternion GyroToUnity(Quaternion q)
     {
         return new Quaternion(q.x, q.y, -q.z, -q.w);
     }

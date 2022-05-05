@@ -37,6 +37,12 @@ public class ScoreCounter : MonoBehaviour
             GameManager.Instance.HighScore = score;
             if (highScoreText) highScoreText.text = "High Score: " + score;
         }
+        else if (!PlayerPrefs.HasKey("High Score") || PlayerPrefs.GetInt("High Score") == 0)
+        {
+            PlayerPrefs.SetInt("High Score", score);
+            GameManager.Instance.HighScore = score;
+            if (highScoreText) highScoreText.text = "High Score: " + score;
+        }
     }
 
     public void ResetHighScore()

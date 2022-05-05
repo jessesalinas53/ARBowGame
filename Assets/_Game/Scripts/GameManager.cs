@@ -90,7 +90,8 @@ public class GameManager : MonoBehaviour
         _menuCanvas.SetActive(true);
         _gameCanvas.SetActive(false);
         _touchInput.enabled = false;
-
+        
+        FindObjectOfType<Webcam>().StopWebCam();
 
         _scoreCounter.UpdateScoreText();
     }
