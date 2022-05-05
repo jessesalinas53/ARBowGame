@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 6c4e7344e40ac104ba7cc1fa08ca868d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Camp Granada NF
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9a2bb69b4a2d10440b75aa13827e8b9b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

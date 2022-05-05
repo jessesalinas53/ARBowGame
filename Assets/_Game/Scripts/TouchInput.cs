@@ -46,7 +46,7 @@ public class TouchInput : MonoBehaviour
                         _spot3.text = _hit.collider.name;
 
                         var bow = _hit.collider.gameObject.GetComponent<BowController>();
-                        if (bow != null)
+                        if (bow != null && bow.CanShoot)
                         {
                             _spot4.text = "Bow is not Null";
                             bow.gameObject.GetComponent<Animator>().SetTrigger("draw");
@@ -63,7 +63,7 @@ public class TouchInput : MonoBehaviour
                 {
                     _spot3.text = "Ended";
                     var bow = _hit.collider.gameObject.GetComponent<BowController>();
-                    if (bow != null)
+                    if (bow != null && bow.CanShoot)
                     {
                         bow.gameObject.GetComponent<Animator>().SetTrigger("shoot");
                     }
@@ -71,22 +71,6 @@ public class TouchInput : MonoBehaviour
                     _hit = new RaycastHit();
 
                 }
-
-                /*
-                if (touch.phase == TouchPhase.Moved)
-                {
-                    _spot3.text = "Moved";
-                    var bow = _hit.collider.gameObject.GetComponent<BowController>();
-                    if (bow != null)
-                    {
-                        var pivot = bow.gameObject.transform.parent;
-                        //var pivot = _webcam.transform;
-                        pivot.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x,touch.position.y,10f)) * 0.1f);
-                    }
-                }
-                */
-
-
             }
         }
         else
@@ -97,8 +81,8 @@ public class TouchInput : MonoBehaviour
                 
                 if (Physics.Raycast(_ray,out _hit))
                 {
-                    var bow = _hit.collider.gameObject.GetComponent<BowController>();
-                    if (bow != null)
+                    var bow = _hit.collider.gameObject?.GetComponent<BowController>();
+                    if (bow != null && bow.CanShoot)
                     {
                         bow.gameObject.GetComponent<Animator>().SetTrigger("draw");
                     }
@@ -108,7 +92,7 @@ public class TouchInput : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 var bow = _hit.collider.gameObject?.GetComponent<BowController>();
-                if (bow != null)
+                if (bow != null && bow.CanShoot)
                 {
                     var pivot = _webcam.transform;
                     //pivot.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f)) * 0.2f);
@@ -120,7 +104,7 @@ public class TouchInput : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 var bow = _hit.collider.gameObject?.GetComponent<BowController>();
-                if (bow != null) bow.gameObject.GetComponent<Animator>().SetTrigger("shoot");
+                if (bow != null && bow.CanShoot) bow.gameObject.GetComponent<Animator>().SetTrigger("shoot");
             }
         }
     }

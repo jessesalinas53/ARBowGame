@@ -27,11 +27,9 @@ public class AudioManager : MonoBehaviour
     {
         if (!source)
         {
-            if (!_audioSource.isPlaying)
-            {
-                _audioSource.clip = clip;
-                _audioSource.Play();
-            }
+            _audioSource.Stop();
+            _audioSource.clip = clip;
+            _audioSource.Play();
         }
         else
         {

@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.PlayOneShot(_backgroundMenuAudio);
+            //AudioManager.Instance.PlayOneShot(_backgroundMenuAudio);
             Instance.HighScore = PlayerPrefs.GetInt("High Score");
             Instance.Score = 0;
             _scoreCounter.OnGameLoad();
