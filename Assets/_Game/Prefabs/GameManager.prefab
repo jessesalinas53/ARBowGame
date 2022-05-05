@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c1d2e79ebdba34eb5c9eb3be332ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Score: 0
+  HighScore: 0
+  _restartPanel: {fileID: 0}
+  _gameCanvas: {fileID: 0}
 --- !u!114 &5889675463505352845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,14 +62,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d95f1c42eaba548b0f0c31e3bbebb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
-  highScore: 0
   scoreText: {fileID: 0}
   highScoreText: {fileID: 0}
   postGameScoreText: {fileID: 0}
   menuHighScoreText: {fileID: 0}
-  startMenuPnl: {fileID: 0}
-  restartPnl: {fileID: 0}
 --- !u!114 &5889675463505352840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,8 +81,6 @@ MonoBehaviour:
   timeRemaining: 20
   timerIsRunning: 0
   timerText: {fileID: 0}
-  restartPanel: {fileID: 0}
-  gameCanvas: {fileID: 0}
 --- !u!114 &5889675463505352846
 MonoBehaviour:
   m_ObjectHideFlags: 0

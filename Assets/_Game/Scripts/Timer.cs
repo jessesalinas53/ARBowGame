@@ -25,21 +25,18 @@ public class Timer : MonoBehaviour
 
     private void CustomTimer()
     {
-        if (timerText)
+        if (timerIsRunning == true)
         {
-            if (timerIsRunning == true)
+            if (timeRemaining > 0)
             {
-                if (timeRemaining > 0)
-                {
-                    timeRemaining -= Time.deltaTime;
-                }
-                else
-                {
-                    OutOfTime();
-                }
+                timeRemaining -= Time.deltaTime;
             }
-            DisplayText(timeRemaining);
+            else
+            {
+                OutOfTime();
+            }
         }
+        DisplayText(timeRemaining);
     }
 
     public void OutOfTime()
@@ -54,14 +51,6 @@ public class Timer : MonoBehaviour
     {
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         float milliSeconds = (timeToDisplay % 1) * 100;
-        timerText.text = string.Format("Time: {0:00}:{1:00}", seconds, milliSeconds);
+        if (timerText) timerText.text = string.Format("Time: {0:00}:{1:00}", seconds, milliSeconds);
     }
-
-    /*
-    public void StartTimer()
-    {
-        timerIsRunning = true;
-        restartPanel.SetActive(false);
-    }
-    */
 }

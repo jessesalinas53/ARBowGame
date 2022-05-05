@@ -52,6 +52,7 @@ public class Webcam : MonoBehaviour
     public void StartWebCam()
     {
         _webCamTexture.Play();
+        Debug.Log("Started Webcam");
     }
 
     public void StopWebCam()
@@ -64,30 +65,5 @@ public class Webcam : MonoBehaviour
         gameObject.transform.rotation = _camGyro.attitude;
         _spot2.text = _canvasTransform.rotation.ToString();
         //_canvasTransform.rotation = Quaternion.Euler(0, 0, -_webCamTexture.videoRotationAngle) * gameObject.transform.rotation;
-    }
-
-    private void CheckOrientation()
-    {
-        if (Input.deviceOrientation == DeviceOrientation.Portrait)
-        {
-            _canvasTransform.sizeDelta = new Vector2(1920, 2160);
-        }
-        else if (Input.deviceOrientation == DeviceOrientation.LandscapeLeft || Input.deviceOrientation == DeviceOrientation.LandscapeRight)
-        {
-            _canvasTransform.sizeDelta = new Vector2(3840, 2160);
-        }
-    }
-
-    private void AccelerationToRotation(float speed)
-    {
-        _dir.x = Input.acceleration.x;
-        _dir.y = Input.acceleration.y;
-        _dir.z = Input.acceleration.z;
-
-        if (_dir.sqrMagnitude > 1) _dir.Normalize();
-
-        _dir *= Time.deltaTime;
-
-        transform.rotation *= Quaternion.Euler(_dir * speed);
     }
 }

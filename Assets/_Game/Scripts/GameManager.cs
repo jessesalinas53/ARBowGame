@@ -7,11 +7,17 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;
 
+    [SerializeField] public int Score = 0;
+    [SerializeField] public int HighScore = 0;
+
+    [SerializeField] private int _currentScene = 0;
+    public int CurrentScene => _currentScene;
+
     [SerializeField] private GameObject _restartPanel = null;
     [SerializeField] private GameObject _gameCanvas = null;
 
     private Timer _timer;
-    private Score _score;
+    private ScoreCounter _scoreCounter;
     private TouchInput _touchInput;
 
     private void Awake()
@@ -28,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
 
         _timer = GetComponent<Timer>();
-        _score = GetComponent<Score>();
+        _scoreCounter = GetComponent<ScoreCounter>();
         _touchInput = GetComponent<TouchInput>();
     }
 
@@ -47,13 +53,18 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("OnSceneLoaded: " + scene.name);
 
-        if (scene.buildIndex == 1)
+        _currentScene = scene.buildIndex;
+
+        if (_currentScene == 1)
         {
             _timer.timerIsRunning = true;
             _touchInput.enabled = true;
         }
         else
         {
+            Instance.HighScore = PlayerPrefs.GetInt("High Score");
+            Instance.Score = 0;
+            _scoreCounter.OnGameLoad();
             _timer.timerIsRunning = false;
             _touchInput.enabled = false;
         }
@@ -74,5 +85,8 @@ public class GameManager : MonoBehaviour
         _restartPanel.SetActive(true);
         _gameCanvas.SetActive(false);
         _touchInput.enabled = false;
+
+
+        _scoreCounter.UpdateScoreText();
     }
 }
