@@ -77,14 +77,16 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        StartCoroutine(load(1));
-        GameObject.Find("transition_obj").GetComponent<transition_scr>().speed = 7500;
+        SceneManager.LoadScene(1);
+        //StartCoroutine(load(1));
+        //GameObject.Find("transition_obj").GetComponent<transition_scr>().speed = 7500;
     }
 
     public void ReturnToMainMenu()
     {
-        StartCoroutine(load(0));
-        GameObject.Find("transition_obj").GetComponent<transition_scr>().speed = 7500;
+        SceneManager.LoadScene(0);
+        //StartCoroutine(load(0));
+        //GameObject.Find("transition_obj").GetComponent<transition_scr>().speed = 7500;
     }
 
     IEnumerator load(int scene_num)
