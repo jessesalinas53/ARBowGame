@@ -38,8 +38,7 @@ public class TouchInput : MonoBehaviour
 
                 if (touch.phase == TouchPhase.Began)
                 {
-                    _spot2.text = touch.position.ToString();
-
+                    _spot3.text = "Began";
                     _ray = Camera.main.ScreenPointToRay(new Vector3(touch.position.x, touch.position.y, 0f));
 
                     if (Physics.Raycast(_ray, out _hit))
@@ -60,19 +59,9 @@ public class TouchInput : MonoBehaviour
 
                 }
 
-                if (touch.phase == TouchPhase.Moved)
-                {
-                    var bow = _hit.collider.gameObject.GetComponent<BowController>();
-                    if (bow != null)
-                    {
-                        var pivot = bow.gameObject.transform.parent;
-                        //var pivot = _webcam.transform;
-                        pivot.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x,touch.position.y,10f)) * 0.1f);
-                    }
-                }
-
                 if (touch.phase == TouchPhase.Ended)
                 {
+                    _spot3.text = "Ended";
                     var bow = _hit.collider.gameObject.GetComponent<BowController>();
                     if (bow != null)
                     {
@@ -82,6 +71,22 @@ public class TouchInput : MonoBehaviour
                     _hit = new RaycastHit();
 
                 }
+
+                /*
+                if (touch.phase == TouchPhase.Moved)
+                {
+                    _spot3.text = "Moved";
+                    var bow = _hit.collider.gameObject.GetComponent<BowController>();
+                    if (bow != null)
+                    {
+                        var pivot = bow.gameObject.transform.parent;
+                        //var pivot = _webcam.transform;
+                        pivot.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x,touch.position.y,10f)) * 0.1f);
+                    }
+                }
+                */
+
+
             }
         }
         else

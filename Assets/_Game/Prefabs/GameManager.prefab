@@ -48,7 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: 0
   HighScore: 0
-  _restartPanel: {fileID: 0}
+  _currentScene: 0
+  _menuCanvas: {fileID: 0}
   _gameCanvas: {fileID: 0}
 --- !u!114 &5889675463505352845
 MonoBehaviour:

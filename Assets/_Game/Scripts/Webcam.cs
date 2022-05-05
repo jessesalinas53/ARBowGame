@@ -22,10 +22,10 @@ public class Webcam : MonoBehaviour
     [SerializeField] private RectTransform _canvasTransform = null;
 
     private Vector3 _dir = Vector3.zero;
+    private Quaternion _offset;
 
     private void Awake()
     {
-        //_camera = GetComponent<Camera>();
         _camGyro = Input.gyro;
         _camGyro.enabled = true;
     }
@@ -37,6 +37,8 @@ public class Webcam : MonoBehaviour
         _rawImage.material.mainTexture = _webCamTexture;
         _baseRotation = transform.rotation;
         StartWebCam();
+
+        _offset = transform.rotation * Quaternion.Inverse(GyroToUnity(_camGyro.attitude));
     }
 
     private void Update()
@@ -44,7 +46,7 @@ public class Webcam : MonoBehaviour
         CameraGyroscopeRotation();
 
         _spot1.text = _camGyro.attitude.eulerAngles.ToString();
-        //_spot2.text = _camGyro.attitude.ToString();
+        _spot2.text = gameObject.transform.rotation.eulerAngles.ToString();
         //_spot3.text = _camGyro.rotationRateUnbiased.ToString();
         //_spot4.text = _camGyro.userAcceleration.ToString();
     }
@@ -62,8 +64,16 @@ public class Webcam : MonoBehaviour
 
     public void CameraGyroscopeRotation()
     {
-        gameObject.transform.rotation = _camGyro.attitude;
-        _spot2.text = _canvasTransform.rotation.ToString();
-        //_canvasTransform.rotation = Quaternion.Euler(0, 0, -_webCamTexture.videoRotationAngle) * gameObject.transform.rotation;
+        transform.rotation = _offset * GyroToUnity(_camGyro.attitude);
+    }
+
+    private static Quaternion GyroToUnity(Quaternion q)
+    {
+        return new Quaternion(q.x, q.y, -q.z, -q.w);
+    }
+
+    private void OnDisable()
+    {
+        StopWebCam();
     }
 }

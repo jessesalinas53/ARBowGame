@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _currentScene = 0;
     public int CurrentScene => _currentScene;
 
-    [SerializeField] private GameObject _restartPanel = null;
+    [SerializeField] private GameObject _menuCanvas = null;
     [SerializeField] private GameObject _gameCanvas = null;
 
     private Timer _timer;
@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Screen.orientation = ScreenOrientation.Portrait;
+
         if (!Instance)
         {
             Debug.Log("This: " + this.gameObject.name);
@@ -57,6 +59,8 @@ public class GameManager : MonoBehaviour
 
         if (_currentScene == 1)
         {
+            _menuCanvas.SetActive(false);
+            _gameCanvas.SetActive(true);
             _timer.timerIsRunning = true;
             _touchInput.enabled = true;
         }
@@ -82,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        _restartPanel.SetActive(true);
+        _menuCanvas.SetActive(true);
         _gameCanvas.SetActive(false);
         _touchInput.enabled = false;
 
