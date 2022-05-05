@@ -32,7 +32,6 @@ public class TouchInput : MonoBehaviour
     {
         if (Input.touchSupported)
         {
-            _spot1.text = "Touch is Supported";
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
@@ -87,14 +86,12 @@ public class TouchInput : MonoBehaviour
         }
         else
         {
-            _spot1.text = "Touch is not Supported";
             if (Input.GetMouseButtonDown(0))
             {
                 _ray = Camera.main.ScreenPointToRay(Input.mousePosition); ;
                 
                 if (Physics.Raycast(_ray,out _hit))
                 {
-                    _spot2.text = _hit.collider.name; 
                     var bow = _hit.collider.gameObject.GetComponent<BowController>();
                     if (bow != null)
                     {
@@ -105,7 +102,7 @@ public class TouchInput : MonoBehaviour
 
             if (Input.GetMouseButton(0))
             {
-                var bow = _hit.collider.gameObject.GetComponent<BowController>();
+                var bow = _hit.collider.gameObject?.GetComponent<BowController>();
                 if (bow != null)
                 {
                     var pivot = _webcam.transform;
@@ -117,7 +114,7 @@ public class TouchInput : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
             {
-                var bow = _hit.collider.gameObject.GetComponent<BowController>();
+                var bow = _hit.collider.gameObject?.GetComponent<BowController>();
                 if (bow != null) bow.gameObject.GetComponent<Animator>().SetTrigger("shoot");
             }
         }
