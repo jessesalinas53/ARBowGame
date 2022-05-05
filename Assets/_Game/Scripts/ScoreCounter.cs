@@ -15,7 +15,7 @@ public class ScoreCounter : MonoBehaviour
     {
         if (GameManager.Instance.CurrentScene == 1)
         {
-            if (scoreText) scoreText.text = "Score: " + GameManager.Instance.Score;
+            if (scoreText) scoreText.text = "Score: \n" + GameManager.Instance.Score;
         }
     }
 

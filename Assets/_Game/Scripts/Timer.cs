@@ -51,6 +51,6 @@ public class Timer : MonoBehaviour
     {
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         float milliSeconds = (timeToDisplay % 1) * 100;
-        if (timerText) timerText.text = string.Format("Time: {0:00}:{1:00}", seconds, milliSeconds);
+        if (timerText) timerText.text = string.Format("Time: \n{0:00}:{1:00}", seconds, milliSeconds);
     }
 }

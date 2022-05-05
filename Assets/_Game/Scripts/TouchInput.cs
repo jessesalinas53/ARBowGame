@@ -7,12 +7,6 @@ using UnityEngine.UIElements;
 
 public class TouchInput : MonoBehaviour
 {
-
-    [SerializeField] private TMP_Text _spot1 = null;
-    [SerializeField] private TMP_Text _spot2 = null;
-    [SerializeField] private TMP_Text _spot3 = null;
-    [SerializeField] private TMP_Text _spot4 = null;
-
     private RaycastHit _hit;
     private Ray _ray;
 
@@ -38,47 +32,20 @@ public class TouchInput : MonoBehaviour
 
                 if (touch.phase == TouchPhase.Began)
                 {
-                    _spot2.text = touch.position.ToString();
-
                     _ray = Camera.main.ScreenPointToRay(new Vector3(touch.position.x, touch.position.y, 0f));
 
                     if (Physics.Raycast(_ray, out _hit))
                     {
-                        _spot3.text = _hit.collider.name;
-
                         var bow = _hit.collider.gameObject.GetComponent<BowController>();
-                        if (bow != null)
-                        {
-                            _spot4.text = "Bow is not Null";
-                            bow.gameObject.GetComponent<Animator>().SetTrigger("draw");
-                        }
-                        else
-                        {
-                            _spot4.text = "Bow is Null";
-                        }
+                        if (bow != null && bow.CanShoot) bow.gameObject.GetComponent<Animator>().SetTrigger("draw");
                     }
 
-                }
-
-                if (touch.phase == TouchPhase.Moved)
-                {
-                    var bow = _hit.collider.gameObject.GetComponent<BowController>();
-                    if (bow != null)
-                    {
-                        var pivot = bow.gameObject.transform.parent;
-                        //var pivot = _webcam.transform;
-                        pivot.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x,touch.position.y,10f)) * 0.1f);
-                    }
                 }
 
                 if (touch.phase == TouchPhase.Ended)
                 {
                     var bow = _hit.collider.gameObject.GetComponent<BowController>();
-                    if (bow != null)
-                    {
-                        bow.gameObject.GetComponent<Animator>().SetTrigger("shoot");
-                    }
-                    _spot4.text = "";
+                    if (bow != null && bow.CanShoot) bow.gameObject.GetComponent<Animator>().SetTrigger("shoot");
                     _hit = new RaycastHit();
 
                 }
@@ -92,30 +59,18 @@ public class TouchInput : MonoBehaviour
                 
                 if (Physics.Raycast(_ray,out _hit))
                 {
-                    var bow = _hit.collider.gameObject.GetComponent<BowController>();
-                    if (bow != null)
+                    var bow = _hit.collider.gameObject?.GetComponent<BowController>();
+                    if (bow != null && bow.CanShoot)
                     {
                         bow.gameObject.GetComponent<Animator>().SetTrigger("draw");
                     }
                 }
             }
 
-            if (Input.GetMouseButton(0))
-            {
-                var bow = _hit.collider.gameObject?.GetComponent<BowController>();
-                if (bow != null)
-                {
-                    var pivot = _webcam.transform;
-                    pivot.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f)) * 0.2f);
-                }
-                
-            }
-
-
             if (Input.GetMouseButtonUp(0))
             {
                 var bow = _hit.collider.gameObject?.GetComponent<BowController>();
-                if (bow != null) bow.gameObject.GetComponent<Animator>().SetTrigger("shoot");
+                if (bow != null && bow.CanShoot) bow.gameObject.GetComponent<Animator>().SetTrigger("shoot");
             }
         }
     }
