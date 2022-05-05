@@ -45,7 +45,7 @@ public class Webcam : MonoBehaviour
     {
         CameraGyroscopeRotation();
 
-        _spot1.text = _camGyro.attitude.eulerAngles.ToString();
+        _spot1.text = _canvasTransform.rotation.eulerAngles.ToString();
         _spot2.text = gameObject.transform.rotation.eulerAngles.ToString();
         //_spot3.text = _camGyro.rotationRateUnbiased.ToString();
         //_spot4.text = _camGyro.userAcceleration.ToString();
@@ -65,6 +65,7 @@ public class Webcam : MonoBehaviour
     public void CameraGyroscopeRotation()
     {
         transform.rotation = _offset * GyroToUnity(_camGyro.attitude);
+        _canvasTransform.rotation = _offset * GyroToUnity(_camGyro.attitude);
     }
 
     private static Quaternion GyroToUnity(Quaternion q)

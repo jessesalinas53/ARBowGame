@@ -111,7 +111,7 @@ public class TouchInput : MonoBehaviour
                 if (bow != null)
                 {
                     var pivot = _webcam.transform;
-                    pivot.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f)) * 0.2f);
+                    //pivot.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f)) * 0.2f);
                 }
                 
             }
